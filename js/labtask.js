@@ -7,7 +7,7 @@
  * @param 	divisor		number the dividend is divided by
  * @return				quotient (result of division).
  */
-function divideNum(dividend, divisor){
+function divideNum(dividend, divisor) {
 	var answer = dividend / divisor;
 	return answer;
 	//return result
@@ -22,7 +22,7 @@ function divideNum(dividend, divisor){
  * @param 	makeB	make of car
  * @return			Array of car makes (strings).
  */
-function returnArray(makeA, makeB, makeC){
+function returnArray(makeA, makeB, makeC) {
 	var carMakes = [];
 	carMakes.push(makeA);
 	carMakes.push(makeB);
@@ -41,7 +41,7 @@ function returnArray(makeA, makeB, makeC){
  * @param 	email		Students email address
  * @return				Student object
  */
-function student(firstname, lastname, email){
+function student(firstname, lastname, email) {
 	var newStudent = {}
 	newStudent.firstname = firstname;
 	newStudent.lastname = lastname;
@@ -57,7 +57,7 @@ function student(firstname, lastname, email){
  *
  * @return 	URL of current page.
  */
-function getCurrentURL(){
+function getCurrentURL() {
 	return window.location;
 	//return the url of the current page
 }
@@ -74,13 +74,13 @@ function getCurrentURL(){
  *
  * @return 	Object containing information about a string.
  */
-function strungOut(strString, strSubString){
+function strungOut(strString, strSubString) {
 	var newString = {}
 	newString.original = strString;
 	newString.caps = strString.toUpperCase();
 	newString.subIndex = strString.indexOf(strSubString);
 	//consider whether you want to use literal or object notation
-	
+
 	//return string information object
 	return newString;
 }
@@ -94,17 +94,17 @@ function strungOut(strString, strSubString){
  * in the string 
  * @return 	Object containing information about a string.
  */
-function strungOut2(strString, strSubString){
+function strungOut2(strString, strSubString) {
 	let newString2 = {};
 	newString2.original = strString;
-	newString2.getUpper = function getUpper(){
+	newString2.getUpper = function getUpper() {
 		return strString.toUpperCase();
 	}
-	newString2.getIndex = function getIndex(){
+	newString2.getIndex = function getIndex() {
 		return strString.indexOf(strSubString);
 	}
 	//consider whether you want to use literal or object notation
-	
+
 	//return string information object
 	return newString2;
 }
@@ -118,17 +118,17 @@ function strungOut2(strString, strSubString){
  * Add a method (implemented as a function) to the object which determines the number of rooms the hotel currently has 
  * available. 
  */
- /*Student version*/
- function Hotel(name, totalRooms, bookedRooms){
+/*Student version*/
+function Hotel(name, totalRooms, bookedRooms) {
 	this.name = name;
 	this.rooms = totalRooms;
 	this.booked = bookedRooms;
-	this.roomsAvailable = function check(){
+	this.roomsAvailable = function check() {
 		return this.totalRooms - this.bookedRooms;
 	}
-	 //if you use literal notation you will need to return the Hotel
-	
-	 //If you use object notation you will not need to return anything.
+	//if you use literal notation you will need to return the Hotel
+
+	//If you use object notation you will not need to return anything.
 }
 
 /**
@@ -173,14 +173,14 @@ function createHotels() {
  * * bookedRooms - number 
  *
  * @return The total numbers of rooms available across the chain.
- */ 
- /*Student version*/
-function totalAvailability(chainOfHotels){
+ */
+/*Student version*/
+function totalAvailability(chainOfHotels) {
 	//console.table(chainOfHotels);
 	//console.log(chainOfHotels[0].rooms);
 	var roomsAvailable = 0;
 	var i;
-	for(i = 0; i < chainOfHotels.length; i++){
+	for (i = 0; i < chainOfHotels.length; i++) {
 		roomsAvailable = roomsAvailable + (chainOfHotels[i].rooms - chainOfHotels[i].booked);
 		//console.log(chainOfHotels[i].booked);
 		//console.log(roomsAvailable);
@@ -199,8 +199,8 @@ function totalAvailability(chainOfHotels){
  *
  * @param	chainOfHotels	An array containing hotels in the same chain.
  * @return 					An array of hotels in the chain which have swimming pools.
- */ 
-function addSwimmingPools(chainOfHotels){
+ */
+function addSwimmingPools(chainOfHotels) {
 	var chain = createHotels();
 	var hotelsWithSwimmingPools = [];
 	var i;
@@ -208,22 +208,22 @@ function addSwimmingPools(chainOfHotels){
 	//console.log(chainOfHotels);
 	//console.table(chain);
 	//console.log(chain);
-	for(i = 0; i < chainOfHotels.length; i++){
+	for (i = 0; i < chainOfHotels.length; i++) {
 		//console.log(chainOfHotels[i]);
-		if(chainOfHotels[i].rooms < 250){
+		if (chainOfHotels[i].rooms < 250) {
 			chainOfHotels[i].swimmingPool = "false";
 			//console.log(chainOfHotels[i]);
-		}else if(chainOfHotels[i].rooms > 250){
+		} else if (chainOfHotels[i].rooms > 250) {
 			chainOfHotels[i].swimmingPool = "true";
 			hotelsWithSwimmingPools.push(chainOfHotels[i]);
 			//console.log(chainOfHotels[i]);
 		}
 	}
-	for(i = 0; i < chain.length; i++){
-		if(chain[i].rooms < 250){
+	for (i = 0; i < chain.length; i++) {
+		if (chain[i].rooms < 250) {
 			chain[i].swimmingPool = "false";
 			//console.log(chain[i]);
-		}else if(chain[i].rooms > 250){
+		} else if (chain[i].rooms > 250) {
 			chain[i].swimmingPool = "true";
 			hotelsWithSwimmingPools.push(chain[i]);
 			//console.log(chain[i]);
@@ -247,53 +247,81 @@ function addSwimmingPools(chainOfHotels){
  * If the hotel scores 7 or more they receive a Gold rating.
  * The average hotel customer wants a silver rated hotel, so the function 'ratings' should return the 
  * silver rated hotels in an array.
- *
+ * Properties available in each hotel are:-
+ * * name - string 
+ * * totalRooms - number
+ * * bookedRooms - number 
+ * * hasSwimmingPool - boolean
+ * * hasGym - boolean
+ * * roomsAvailable - function
  * @param 	chainOfHotels 	Array of hotel objects belonging to the same hotel chain.
  * @return 					Array containing hotels with a Silver rating.
- */ 
-function ratings(chainOfHotels){
-	var score;
+ */
+function ratings(chainOfHotels) {
 	var silverRatedHotels = [];
-	for(i = 0; i < chainOfHotels.length; i++){
-		if(score < 3){
-
-		}else if(score < 7){
-			silverRatedHotels.push();
-		}else if(score > 7){
-
+	//console.log(chainOfHotels.length);
+	console.table(chainOfHotels);
+	for (i = 0; i < chainOfHotels.length; i++) {
+		//console.log(chainOfHotels[i]);
+		if (calculateScore(chainOfHotels[i]) > 3 && calculateScore(chainOfHotels[i]) < 7) {
+			console.log("The hotels score is " + calculateScore(chainOfHotels[i]));
+			silverRatedHotels.push(chainOfHotels[i]);
 		}
-	}	
+		//console.log(calculateScore(chainOfHotels[i]));
+	}
 	//use console.table to check the values in the array
-	
+	console.log(silverRatedHotels);
 	//return array of Silver rated hotels
 	return silverRatedHotels;
 }
 
- /* TASK
- * Write a function called calculateScore to calculate the hotels score:
- * 1 point for each 100 rooms they have
- * 3 points for a pool 
- * 2 points for a gym
- * Call this method from 'ratings' to get the score, on which to base the ratings.
- *
- * @return 	The number of swimming pools with gyms.
- */
-function calculateScore(hotelToScore){
-	var score;
-	var hotelsWithSwimmingPoolsAndGyms = [];
-	console.log(hotelToScore);
-	for(i = 0; i < chainOfHotels.length; i++){
-		if(chainOfHotels[i].hasSwimmingPool === "true" && chainOfHotels[i].hasGym === "true"){
-			score = score + (chainOfHotels[i].totalRooms / 100) + 4;
-			hotelsWithSwimmingPoolsAndGyms.push(chainOfHotels[i]);
-		}else if(chainOfHotels[i].hasGym === "true"){
-			score = score + (chainOfHotels[i].totalRooms / 100) + 1;
-		}else if(chainOfHotels[i].hasSwimmingPool === "true"){
-			score = score + (chainOfHotels[i].totalRooms / 100) + 3;
-		}else{
-			score = score + (chainOfHotels[i].totalRooms / 100);
-		}		
-	}	
+/* TASK
+* Write a function called calculateScore to calculate the hotels score:
+* 1 point for each 100 rooms they have
+* 3 points for a pool 
+* 2 points for a gym
+* Call this method from 'ratings' to get the score, on which to base the ratings.
+* Properties available in each hotel are:-
+* * name - string 
+* * totalRooms - number
+* * bookedRooms - number 
+* * hasSwimmingPool - boolean
+* * hasGym - boolean
+* * roomsAvailable - function
+*
+* @return 	score
+*/
+function calculateScore(hotelToScore) {
+	//console.log("calculateScore has been called with " + hotelToScore.name);
+	var score = 0;
+	var roomScore = hotelToScore.totalRooms / 100;
+	var hasGym = hotelToScore.hasGym;
+	var hasSwimmingPool = hotelToScore.hasSwimmingPool;
+	var arrayHotelsWithPoolsAndGyms = [];
+	//console.log("Hotel has a swimming pool " + hotelToScore.hasSwimmingPool);
+	//console.log("Hotel has a swimming pool " + hasSwimmingPool);
+	//console.log("Hotel has a gym " + hotelToScore.hasGym);
+	//console.log("Hotel has a gym " + hasGym);
+	//console.log("The hotels room score " + roomScore);
+	if (hasSwimmingPool == true && hasGym == true) {
+		//console.log("first if has been reached");
+		score = score + roomScore + 5;
+		//console.log(score);
+		arrayHotelsWithPoolsAndGyms.push(hotelToScore);
+		//console.table(arrayHotelsWithPoolsAndGyms);
+	} else if (hasGym == true) {
+		//console.log("first else if has been reached");
+		score = score + roomScore + 2;
+		//console.log(score);
+	} else if (hasSwimmingPool == true) {
+		//console.log("second else if has been reached");
+		score = score + roomScore + 3;
+		//console.log(score);
+	} else {
+		//console.log("first else has been reached");
+		score = score + roomScore;
+		//console.log(score);
+	}
 	//return array
-	return hotelsWithSwimmingPoolsAndGyms;
+	return score;
 }
